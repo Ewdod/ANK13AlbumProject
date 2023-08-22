@@ -1,0 +1,46 @@
+﻿@using ANK13AlbumProject.Entities;
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model Admin
+<div class="w-25 card-body">
+    <form asp-controller="Admin" asp-action="Login" method="post" enctype="multipart/form-data">
+        <div>
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" type="text" class="form-control" />
+
+        </div>
+
+        <div>
+            <label asp-for="Password"></label>
+            <input asp-for="Password" type="password" class="form-control" />
+        </div>
+        <br />
+
+        <button type="submit" class="btn btn-primary btn-block ">GİRİŞ YAP</button>
+        <a class="btn btn-info" asp-controller="Admin" asp-action="Register"> KAYIT OL </a>
+
+    </form>
+</div>
+@{
+    if (TempData["Hata"] != null)
+    {
+        <div class="container mt-3">
+            <div class="mt-2 p-1 bg-danger text-white rounded">
+                <h1>HATA!</h1>
+                <p> @TempData["Hata"]</p>
+            </div>
+        </div>
+    }
+    else if (TempData["Basari"] != null)
+    {
+        <div class="container mt-3">
+            <div class="mt-2 p-1 bg-success text-white rounded">
+                <h1>TEBRİKLER!</h1>
+                <p> @TempData["Basari"]</p>
+            </div>
+        </div>
+    }
+}
+
+
